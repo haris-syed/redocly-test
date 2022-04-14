@@ -1,6 +1,6 @@
 training:
   - page: developer-portal/index.md
-  - group: Training exercises
+  - group: Redocly Training exercises
     expanded: true
     pages:
       - label: Setup
@@ -38,34 +38,13 @@ training:
         page: developer-portal/mdx.mdx
       - label: Creating React components
         page: developer-portal/custom-component.mdx
-  - group: Petstore reference
+      - label: Upgrading
+        page: developer-portal/upgrade.md
+  - group: API references
     expanded: false
     pages:
       - page: openapi/reference.page.yaml/*
 
-  - group: Admin
-    expanded: true
-    pages:
-      - group: Routine
-        expanded: true
-        pages:
-          - group: Rock
-            expanded: true
-            pages:
-              - group: Paper
-                expanded: true
-                pages:
-                  - group: Scissors
-                    expanded: true
-                    pages:
-                      - group: 1-2-3
-                        expanded: true
-                        pages:
-                          - group: Go
-                            expanded: true
-                            pages:
-                              - label: Upgrading
-                                # page: developer-portal/upgrade.md
 alternative:
   - page: developer-portal/sidebar-alternative.md
     label: Alternative sidebar example

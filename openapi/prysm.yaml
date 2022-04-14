@@ -1,0 +1,1925 @@
+basePath: /
+consumes:
+- application/json
+definitions:
+  Aggregator:
+    properties:
+      name:
+        type: string
+        x-go-name: Name
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip/search
+  Amenity:
+    description: Amenity
+    properties:
+      icon:
+        format: uri
+        type: string
+        x-go-name: Icon
+      icon_svg:
+        format: uri
+        type: string
+        x-go-name: SVGIcon
+      name:
+        type: string
+        x-go-name: Name
+      name_i18n:
+        additionalProperties:
+          type: object
+        description: this is over-written by name. you can safely ignore
+        type: object
+        x-go-name: NameI18n
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip/search
+  AmenityPayload:
+    description: AmenityPayload
+    properties:
+      id:
+        $ref: '#/definitions/ObjectID'
+      name:
+        type: string
+        x-go-name: Name
+      name_i18n:
+        additionalProperties:
+          type: object
+        type: object
+        x-go-name: NameI18n
+      order_priority:
+        format: int64
+        type: integer
+        x-go-name: OrderPriority
+      png_icon_url:
+        type: string
+        x-go-name: PNGIconURL
+      reference_id:
+        type: string
+        x-go-name: ReferenceID
+      svg_icon_url:
+        type: string
+        x-go-name: SVGIconURL
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/amenity
+  BookingCancellationResponse:
+    description: A response from get booking cancel action
+    properties:
+      created_at:
+        type: string
+        x-go-name: CreatedAt
+      currency:
+        type: string
+        x-go-name: Currency
+      fee:
+        format: int64
+        type: integer
+        x-go-name: Fee
+      id:
+        type: string
+        x-go-name: ID
+      total_price:
+        format: int64
+        type: integer
+        x-go-name: TotalPrice
+      total_refund:
+        format: int64
+        type: integer
+        x-go-name: TotalRefund
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/booking
+  BookingCity:
+    description: A booking city response model
+    properties:
+      code:
+        type: string
+        x-go-name: Code
+      name:
+        type: string
+        x-go-name: Name
+    type: object
+    x-go-name: City
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/booking
+  BookingCreateRequest:
+    description: This is used for operations that want to create A booking as body
+      of the request
+    properties:
+      booking_details:
+        type: object
+        x-go-name: BookingDetails
+      total_price:
+        format: int64
+        type: integer
+        x-go-name: TotalPrice
+      trip_id:
+        type: string
+        x-go-name: TripId
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/booking
+  BookingCreateResponse:
+    description: A response from booking create action
+    properties:
+      created_at:
+        type: string
+        x-go-name: CreatedAt
+      currency:
+        type: string
+        x-go-name: Currency
+      dropoff_station:
+        $ref: '#/definitions/BookingStation'
+      dropoff_time:
+        type: string
+        x-go-name: DropoffTime
+      id:
+        type: string
+        x-go-name: ID
+      marketing_carrier:
+        $ref: '#/definitions/BookingMarketingCarrier'
+      passengers_count:
+        format: int64
+        type: integer
+        x-go-name: PassengersCount
+      pickup_station:
+        $ref: '#/definitions/BookingStation'
+      pickup_time:
+        type: string
+        x-go-name: PickupTime
+      total_price:
+        format: int64
+        type: integer
+        x-go-name: TotalPrice
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/booking
+  BookingDetailsResponse:
+    description: A Booking details response model returning in /bookings/{id} endpoint
+    properties:
+      currency:
+        type: string
+        x-go-name: Currency
+      dropoff_station:
+        $ref: '#/definitions/StationDetailsData'
+      dropoff_time:
+        type: string
+        x-go-name: DropoffTime
+      id:
+        type: string
+        x-go-name: ID
+      marketing_carrier:
+        $ref: '#/definitions/MarketingCarrierData'
+      passengers:
+        items:
+          $ref: '#/definitions/PassengerData'
+        type: array
+        x-go-name: Passengers
+      passengers_count:
+        format: int64
+        type: integer
+        x-go-name: PassengersCount
+      pickup_station:
+        $ref: '#/definitions/StationDetailsData'
+      pickup_time:
+        type: string
+        x-go-name: PickupTime
+      total_price:
+        format: int64
+        type: integer
+        x-go-name: TotalPrice
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/booking
+  BookingMarketingCarrier:
+    description: A booking marketing carrier response model
+    properties:
+      code:
+        type: string
+        x-go-name: Code
+      customer_service_email:
+        type: string
+        x-go-name: CustomerServiceEmail
+      customer_service_phone:
+        type: string
+        x-go-name: CustomerServicePhone
+      name:
+        type: string
+        x-go-name: Name
+      phone:
+        type: string
+        x-go-name: Phone
+    type: object
+    x-go-name: MarketingCarrier
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/booking
+  BookingStation:
+    description: A booking station response model
+    properties:
+      city:
+        $ref: '#/definitions/BookingCity'
+      code:
+        type: string
+        x-go-name: Code
+      description:
+        type: string
+        x-go-name: Description
+      latitude:
+        format: double
+        type: number
+        x-go-name: Lat
+      longitude:
+        format: double
+        type: number
+        x-go-name: Lng
+      name:
+        type: string
+        x-go-name: Name
+      street_and_number:
+        type: string
+        x-go-name: Street
+      time_zone:
+        type: string
+        x-go-name: Timezone
+    type: object
+    x-go-name: Station
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/booking
+  BookingStations:
+    description: A booking stations details model
+    properties:
+      booking_id:
+        type: string
+        x-go-name: BookingId
+      stations:
+        items:
+          $ref: '#/definitions/StationDetails'
+        type: array
+        x-go-name: Stations
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/booking/bookings
+  BusDeck:
+    properties:
+      index:
+        format: int64
+        type: integer
+        x-go-name: Index
+      number_of_cells_per_row:
+        format: int64
+        type: integer
+        x-go-name: NumberOfCellsPerRow
+      number_of_rows:
+        format: int64
+        type: integer
+        x-go-name: NumberOfRows
+      rows:
+        items:
+          $ref: '#/definitions/DeckRow'
+        type: array
+        x-go-name: Rows
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/trip
+  CancellationAllowedConditions:
+    properties:
+      currency:
+        type: string
+        x-go-name: Currency
+      cutoff:
+        type: string
+        x-go-name: Cutoff
+      fee:
+        format: int64
+        type: integer
+        x-go-name: Fee
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/booking
+  CancellationParameters:
+    properties:
+      cutoff_time:
+        format: int64
+        type: integer
+        x-go-name: CutoffTime
+      fee:
+        $ref: '#/definitions/MonetaryAmount'
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/trip
+  Carrier:
+    properties:
+      code:
+        type: string
+        x-go-name: Code
+      id:
+        type: string
+        x-go-name: ID
+      legal_name:
+        type: string
+        x-go-name: LegalName
+      logo:
+        type: string
+        x-go-name: Logo
+      name:
+        type: string
+        x-go-name: Name
+      rating:
+        $ref: '#/definitions/Rating'
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/carrier
+  CarrierBookingSchemaResponse:
+    properties:
+      contact_details:
+        items:
+          $ref: '#/definitions/UIField'
+        type: array
+        x-go-name: ContactDetails
+      passenger_details:
+        items:
+          $ref: '#/definitions/UIField'
+        type: array
+        x-go-name: PassengerDetails
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip
+  CarrierCancellationParameters:
+    properties:
+      cutoff_time:
+        format: int64
+        type: integer
+        x-go-name: CutoffTime
+      fee:
+        $ref: '#/definitions/CarrierMonetaryAmount'
+    type: object
+    x-go-name: CancellationParameters
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/booking
+  CarrierCarrierCancellationPolicy:
+    properties:
+      fare_classes_policies:
+        items:
+          $ref: '#/definitions/CarrierFareClassCancellationPolicy'
+        type: array
+        x-go-name: FareClassesCancellationPolicies
+      generic_policy:
+        $ref: '#/definitions/CarrierCarrierGenericCancellationPolicy'
+    type: object
+    x-go-name: CarrierCancellationPolicy
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/booking
+  CarrierCarrierGenericCancellationPolicy:
+    properties:
+      cancellation_allowed:
+        type: boolean
+        x-go-name: IsCancellationAllowed
+      cancellation_parameters:
+        $ref: '#/definitions/CarrierCancellationParameters'
+    type: object
+    x-go-name: CarrierGenericCancellationPolicy
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/booking
+  CarrierCarrierTerms:
+    properties:
+      text:
+        type: string
+        x-go-name: Text
+      url:
+        type: string
+        x-go-name: Url
+    type: object
+    x-go-name: CarrierTerms
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/booking
+  CarrierConfig:
+    properties:
+      code:
+        type: string
+        x-go-name: Code
+      name:
+        type: string
+        x-go-name: Name
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip/search
+  CarrierFareClassCancellationPolicy:
+    properties:
+      name:
+        type: string
+        x-go-name: FareClassName
+      policy_text:
+        type: string
+        x-go-name: CancellationPolicyText
+    type: object
+    x-go-name: FareClassCancellationPolicy
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/booking
+  CarrierGenericCancellationPolicy:
+    properties:
+      cancellation_allowed:
+        type: boolean
+        x-go-name: IsCancellationAllowed
+      cancellation_parameters:
+        $ref: '#/definitions/CancellationParameters'
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/trip
+  CarrierMonetaryAmount:
+    properties:
+      amount:
+        format: int64
+        type: integer
+        x-go-name: Amount
+      currency:
+        type: string
+        x-go-name: Currency
+    type: object
+    x-go-name: MonetaryAmount
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/booking
+  CarrierPayload:
+    description: CarrierPayload
+    properties:
+      code:
+        type: string
+        x-go-name: Code
+      id:
+        type: string
+        x-go-name: ID
+      legal_name:
+        type: string
+        x-go-name: LegalName
+      logo:
+        type: string
+        x-go-name: Logo
+      name:
+        type: string
+        x-go-name: Name
+      rating:
+        $ref: '#/definitions/Rating'
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/carrier
+  CarrierTerms:
+    properties:
+      text:
+        type: string
+        x-go-name: Text
+      url:
+        type: string
+        x-go-name: Url
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/trip
+  DeckRow:
+    properties:
+      cells:
+        items:
+          $ref: '#/definitions/DeckSeat'
+        type: array
+        x-go-name: Cells
+      index:
+        format: int64
+        type: integer
+        x-go-name: Index
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/trip
+  DeckSeat:
+    $ref: '#/definitions/deckCell'
+  FareClassAmenity:
+    properties:
+      icon:
+        type: string
+        x-go-name: Icon
+      icon_svg:
+        type: string
+        x-go-name: IconSvg
+      name:
+        type: string
+        x-go-name: Name
+      name_i18n:
+        additionalProperties:
+          type: object
+        type: object
+        x-go-name: NameI18n
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip
+  FareClassCancellationPolicy:
+    properties:
+      name:
+        type: string
+        x-go-name: FareClassName
+      policy_text:
+        type: string
+        x-go-name: CancellationPolicyText
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/trip
+  Field:
+    description: FieldWithUIComponent
+    properties:
+      _id:
+        $ref: '#/definitions/ObjectID'
+      group:
+        type: string
+        x-go-name: Group
+      name:
+        type: string
+        x-go-name: Name
+      order_priority:
+        format: int64
+        type: integer
+        x-go-name: OrderPriority
+      ui_component:
+        $ref: '#/definitions/UIComponent'
+    type: object
+    x-go-name: FieldWithUIComponent
+    x-go-package: github.com/swvl/prysm/pkg/field
+  FieldPayload:
+    description: FieldPayload
+    properties:
+      group:
+        type: string
+        x-go-name: Group
+      id:
+        $ref: '#/definitions/ObjectID'
+      name:
+        type: string
+        x-go-name: Name
+      order_priority:
+        format: int64
+        type: integer
+        x-go-name: OrderPriority
+      ui_component:
+        $ref: '#/definitions/ObjectID'
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/field
+  GetBookingCancellationPolicyResponse:
+    description: A response from get booking cancellation policy action
+    properties:
+      allowed:
+        type: boolean
+        x-go-name: Allowed
+      currency:
+        type: string
+        x-go-name: Currency
+      cutoff:
+        type: string
+        x-go-name: Cutoff
+      fee:
+        format: int64
+        type: integer
+        x-go-name: Fee
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/booking
+  GetBookingDetails:
+    description: A Booking details response model returning from adapter /bookings/{id}
+      endpoint
+    properties:
+      created_at:
+        type: string
+        x-go-name: CreatedAt
+      currency:
+        type: string
+        x-go-name: Currency
+      distribusion_booking_number:
+        type: string
+        x-go-name: DistribusionBookingNumber
+      dropoff_city:
+        type: string
+        x-go-name: DropoffCity
+      dropoff_station:
+        $ref: '#/definitions/GetStationDetailsData'
+      dropoff_time:
+        type: string
+        x-go-name: DropoffTime
+      fare_class:
+        $ref: '#/definitions/GetFareClassData'
+      id:
+        type: string
+        x-go-name: ID
+      marketing_carrier:
+        $ref: '#/definitions/GetMarketingCarrierData'
+      marketing_carrier_booking_number:
+        type: string
+        x-go-name: MarketingCarrierBookingNumber
+      passengers:
+        items:
+          $ref: '#/definitions/GetPassengerData'
+        type: array
+        x-go-name: Passengers
+      passengers_count:
+        format: int64
+        type: integer
+        x-go-name: PassengersCount
+      pickup_city:
+        type: string
+        x-go-name: PickupCity
+      pickup_station:
+        $ref: '#/definitions/GetStationDetailsData'
+      pickup_time:
+        type: string
+        x-go-name: PickupTime
+      total_price:
+        format: int64
+        type: integer
+        x-go-name: TotalPrice
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/booking
+  GetCarrierConfigurationResponse:
+    properties:
+      max_bookable_seat_count:
+        format: uint64
+        type: integer
+        x-go-name: MaxBookableSeatCount
+      supports_seat_selection:
+        type: boolean
+        x-go-name: SupportSeatSelection
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/trip
+  GetCarrierPolicyResponse:
+    description: A response from carrier policy action
+    properties:
+      cancellation_policy:
+        $ref: '#/definitions/CarrierCarrierCancellationPolicy'
+      terms:
+        $ref: '#/definitions/CarrierCarrierTerms'
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/booking
+  GetFareClassData:
+    properties:
+      code:
+        type: string
+        x-go-name: Code
+      fare_features:
+        items:
+          $ref: '#/definitions/GetFareFeatureData'
+        type: array
+        x-go-name: FareFeatures
+      name:
+        type: string
+        x-go-name: Name
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/booking
+  GetFareClassesResponse:
+    description: A response from trip fare classes and amenities action
+    properties:
+      fares:
+        items:
+          $ref: '#/definitions/TripFareClass'
+        type: array
+        x-go-name: Fares
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip
+  GetFareFeatureData:
+    properties:
+      code:
+        type: string
+        x-go-name: Code
+      name:
+        type: string
+        x-go-name: Name
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/booking
+  GetMarketingCarrierData:
+    properties:
+      code:
+        type: string
+        x-go-name: Code
+      customer_service_email:
+        type: string
+        x-go-name: CustomerServiceEmail
+      customer_service_phone:
+        type: string
+        x-go-name: CustomerServicePhone
+      name:
+        type: string
+        x-go-name: Name
+      phone:
+        type: string
+        x-go-name: Phone
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/booking
+  GetPassengerData:
+    properties:
+      first_name:
+        type: string
+        x-go-name: FirstName
+      last_name:
+        type: string
+        x-go-name: LastName
+      type:
+        type: string
+        x-go-name: Type
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/booking
+  GetStationDetailsData:
+    properties:
+      code:
+        type: string
+        x-go-name: Code
+      description:
+        type: string
+        x-go-name: Description
+      latitude:
+        format: double
+        type: number
+        x-go-name: Lat
+      longitude:
+        format: double
+        type: number
+        x-go-name: Lng
+      name:
+        type: string
+        x-go-name: Name
+      street_and_number:
+        type: string
+        x-go-name: Street
+      time_zone:
+        type: string
+        x-go-name: Timezone
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/booking
+  GetTripPolicyResponse:
+    description: A response from trip policy action
+    properties:
+      cancellation_policy:
+        $ref: '#/definitions/TripCancellationPolicy'
+      terms:
+        $ref: '#/definitions/CarrierTerms'
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/trip
+  GetVacancyResponse:
+    description: A response from trip vacancy action
+    properties:
+      trip_fare_breakdown:
+        $ref: '#/definitions/TripFareBreakDown'
+      vacant:
+        type: boolean
+        x-go-name: Vacant
+    type: object
+    x-go-name: VacancyResponse
+    x-go-package: github.com/swvl/prysm/pkg/trip
+  Location:
+    properties:
+      lat:
+        format: double
+        type: number
+        x-go-name: Latitude
+      lng:
+        format: double
+        type: number
+        x-go-name: Longitude
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip
+  MarketingCarrierData:
+    properties:
+      code:
+        type: string
+        x-go-name: Code
+      customer_service_email:
+        type: string
+        x-go-name: CustomerServiceEmail
+      customer_service_phone:
+        type: string
+        x-go-name: CustomerServicePhone
+      logo:
+        type: string
+        x-go-name: Logo
+      name:
+        type: string
+        x-go-name: Name
+      rating:
+        format: int32
+        type: integer
+        x-go-name: Rating
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/booking
+  MonetaryAmount:
+    properties:
+      amount:
+        format: int64
+        type: integer
+        x-go-name: Amount
+      currency:
+        type: string
+        x-go-name: Currency
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/trip
+  ObjectID:
+    items:
+      format: uint8
+      type: integer
+    title: ObjectID is the BSON ObjectID type.
+    type: array
+    x-go-package: go.mongodb.org/mongo-driver/bson/primitive
+  OperatorCityMargin:
+    description: OperatorCityMargin
+    properties:
+      city_reference_id:
+        type: string
+        x-go-name: CityReferenceId
+      id:
+        $ref: '#/definitions/ObjectID'
+      margin_percentage:
+        format: float
+        type: number
+        x-go-name: MarginPercentage
+      operator_id:
+        type: string
+        x-go-name: OperatorId
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/operatorCityMargin
+  OperatorCityMarginPayload:
+    description: OperatorCityMarginPayload
+    properties:
+      city_reference_id:
+        type: string
+        x-go-name: CityReferenceId
+      id:
+        $ref: '#/definitions/ObjectID'
+      margin_percentage:
+        format: float
+        type: number
+        x-go-name: MarginPercentage
+      operator_id:
+        type: string
+        x-go-name: OperatorId
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/operatorCityMargin
+  PassengerData:
+    properties:
+      first_name:
+        type: string
+        x-go-name: FirstName
+      last_name:
+        type: string
+        x-go-name: LastName
+      type:
+        type: string
+        x-go-name: Type
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/booking
+  Price:
+    properties:
+      amount:
+        format: int64
+        type: integer
+        x-go-name: Amount
+      currency:
+        type: string
+        x-go-name: Currency
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip/search
+  PriceConfig:
+    properties:
+      value:
+        format: int64
+        type: integer
+        x-go-name: Value
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip/search
+  PriceRangeConfig:
+    properties:
+      currency:
+        type: string
+        x-go-name: Currency
+      max:
+        $ref: '#/definitions/PriceConfig'
+      min:
+        $ref: '#/definitions/PriceConfig'
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip/search
+  PricingData:
+    properties:
+      base_price:
+        $ref: '#/definitions/Price'
+      has_multiple_prices:
+        type: boolean
+        x-go-name: HasMultiplePrices
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip
+  Rating:
+    properties:
+      average:
+        format: float
+        type: number
+        x-go-name: Average
+      count:
+        format: int64
+        type: integer
+        x-go-name: Count
+      sum:
+        format: int64
+        type: integer
+        x-go-name: Sum
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/carrier
+  Station:
+    properties:
+      id:
+        type: string
+        x-go-name: ID
+      location:
+        $ref: '#/definitions/Location'
+      name:
+        type: string
+        x-go-name: Name
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip/search
+  StationConfig:
+    properties:
+      code:
+        type: string
+        x-go-name: Code
+      name:
+        type: string
+        x-go-name: Name
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip
+  StationCoords:
+    properties:
+      lat:
+        format: double
+        type: number
+        x-go-name: Lat
+      lng:
+        format: double
+        type: number
+        x-go-name: Lng
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/trip
+  StationData:
+    properties:
+      station:
+        $ref: '#/definitions/Station'
+      time:
+        $ref: '#/definitions/TimeData'
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip/search
+  StationDetails:
+    description: A station details model
+    properties:
+      Code:
+        type: string
+      lat:
+        format: double
+        type: number
+        x-go-name: Lat
+      lng:
+        format: double
+        type: number
+        x-go-name: Lng
+      name:
+        type: string
+        x-go-name: Name
+      reference_id:
+        type: string
+        x-go-name: ReferenceID
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/booking
+  StationDetailsData:
+    properties:
+      code:
+        type: string
+        x-go-name: Code
+      description:
+        type: string
+        x-go-name: Description
+      latitude:
+        format: double
+        type: number
+        x-go-name: Lat
+      longitude:
+        format: double
+        type: number
+        x-go-name: Lng
+      name:
+        type: string
+        x-go-name: Name
+      street_and_number:
+        type: string
+        x-go-name: Street
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/booking
+  StationsConfig:
+    properties:
+      dropoff:
+        items:
+          $ref: '#/definitions/StationConfig'
+        type: array
+        x-go-name: DropOffStationConfig
+      pickup:
+        items:
+          $ref: '#/definitions/StationConfig'
+        type: array
+        x-go-name: PickupStationConfig
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip
+  TimeData:
+    properties:
+      timezone_offset:
+        description: timezone as an offset in milliseconds
+        format: int64
+        type: integer
+        x-go-name: TimezoneOffset
+      value:
+        description: the value is in UTC
+        type: string
+        x-go-name: Value
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip
+  TimeStamps:
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/datastore/models
+  Trip:
+    properties:
+      aggregator_data:
+        $ref: '#/definitions/Aggregator'
+      amenities:
+        items:
+          $ref: '#/definitions/Amenity'
+        type: array
+        x-go-name: Amenities
+      carrier_data:
+        $ref: '#/definitions/Carrier'
+      dropoff:
+        $ref: '#/definitions/StationData'
+      fare_classes:
+        items:
+          $ref: '#/definitions/TripFareClass'
+        type: array
+        x-go-name: FareClasses
+      id:
+        type: string
+        x-go-name: ID
+      pickup:
+        $ref: '#/definitions/StationData'
+      pricing_data:
+        $ref: '#/definitions/PricingData'
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip
+  TripCancellationPolicy:
+    properties:
+      fare_classes_policies:
+        items:
+          $ref: '#/definitions/FareClassCancellationPolicy'
+        type: array
+        x-go-name: FareClassesCancellationPolicies
+      generic_policy:
+        $ref: '#/definitions/CarrierGenericCancellationPolicy'
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/trip
+  TripFareBreakDown:
+    properties:
+      base_price:
+        format: int64
+        type: integer
+        x-go-name: BasePrice
+      margin_amount:
+        format: int64
+        type: integer
+        x-go-name: MarginAmount
+      operator_city_margin_percentage:
+        format: float
+        type: number
+        x-go-name: OperatorCityMarginPercentage
+      seat_price:
+        format: int64
+        type: integer
+        x-go-name: SeatPrice
+      total_price:
+        format: int64
+        type: integer
+        x-go-name: TotalPrice
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip
+  TripFareClass:
+    properties:
+      amenities:
+        items:
+          $ref: '#/definitions/FareClassAmenity'
+        type: array
+        x-go-name: Amenities
+      id:
+        type: string
+        x-go-name: ID
+      name:
+        type: string
+        x-go-name: Name
+      price:
+        $ref: '#/definitions/MonetaryAmount'
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip
+  TripLocationResponse:
+    properties:
+      station:
+        $ref: '#/definitions/TripStationResponse'
+      time:
+        $ref: '#/definitions/TimeData'
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip/search
+  TripPriceWithMargin:
+    properties:
+      id:
+        type: string
+        x-go-name: ID
+      price_with_margin:
+        format: int64
+        type: integer
+        x-go-name: PriceWithMargin
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip
+  TripResponse:
+    description: A response from get trip
+    properties:
+      carrier_data:
+        $ref: '#/definitions/Carrier'
+      dropoff:
+        $ref: '#/definitions/TripLocationResponse'
+      fare_classes:
+        items:
+          $ref: '#/definitions/TripFareClass'
+        type: array
+        x-go-name: FareClasses
+      id:
+        type: string
+        x-go-name: ID
+      pickup:
+        $ref: '#/definitions/TripLocationResponse'
+      pricing_data:
+        $ref: '#/definitions/PricingData'
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip/search
+  TripSeatMapResponse:
+    description: A response from trip seat map action
+    properties:
+      decks:
+        items:
+          $ref: '#/definitions/BusDeck'
+        type: array
+        x-go-name: Decks
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/trip
+  TripStation:
+    description: A response from trip stations action
+    properties:
+      coords:
+        $ref: '#/definitions/StationCoords'
+      id:
+        type: string
+        x-go-name: ID
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/trip
+  TripStationResponse:
+    properties:
+      city_reference_id:
+        type: string
+        x-go-name: CityReferenceID
+      id:
+        type: string
+        x-go-name: ID
+      location:
+        $ref: '#/definitions/Location'
+      name:
+        type: string
+        x-go-name: Name
+      reference_id:
+        type: string
+        x-go-name: ReferenceID
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip
+  TripsPricesWithMarginResponse:
+    description: A response from trip price with margin action
+    properties:
+      trips_prices:
+        items:
+          $ref: '#/definitions/TripPriceWithMargin'
+        type: array
+        x-go-name: PricesWithMargin
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip
+  TripsResponse:
+    properties:
+      trips:
+        items:
+          $ref: '#/definitions/Trip'
+        type: array
+        x-go-name: Trips
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip/search
+  TripsSearchConfigsResponse:
+    description: A response from trips search configurations
+    properties:
+      carriers:
+        items:
+          $ref: '#/definitions/CarrierConfig'
+        type: array
+        x-go-name: Carriers
+      price_range:
+        $ref: '#/definitions/PriceRangeConfig'
+      stations:
+        $ref: '#/definitions/StationsConfig'
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/trip
+  UIComponent:
+    description: UIComponent
+    properties:
+      _id:
+        $ref: '#/definitions/ObjectID'
+      component:
+        type: string
+        x-go-name: Component
+      i18n_key:
+        type: string
+        x-go-name: I18nKey
+      is_required:
+        type: boolean
+        x-go-name: IsRequired
+      label:
+        type: string
+        x-go-name: Label
+      name:
+        type: string
+        x-go-name: Name
+      placeholder:
+        type: string
+        x-go-name: Placeholder
+      properties:
+        properties:
+          options:
+            items:
+              properties:
+                i18n_key:
+                  type: string
+                  x-go-name: I18nKey
+                name:
+                  type: string
+                  x-go-name: Name
+                value:
+                  type: string
+                  x-go-name: Value
+              type: object
+            type: array
+            x-go-name: Options
+          type:
+            type: string
+            x-go-name: Type
+          validation:
+            properties:
+              max_length:
+                format: int64
+                type: integer
+                x-go-name: MaxLength
+            type: object
+            x-go-name: Validation
+        type: object
+        x-go-name: Properties
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/uicomponent
+  UIComponentPayload:
+    description: UIComponentPayload
+    properties:
+      component:
+        type: string
+        x-go-name: Component
+      i18n_key:
+        type: string
+        x-go-name: I18nKey
+      id:
+        $ref: '#/definitions/ObjectID'
+      is_required:
+        type: boolean
+        x-go-name: IsRequired
+      label:
+        type: string
+        x-go-name: Label
+      name:
+        type: string
+        x-go-name: Name
+      placeholder:
+        type: string
+        x-go-name: Placeholder
+      properties:
+        properties:
+          options:
+            items:
+              properties:
+                i18n_key:
+                  type: string
+                  x-go-name: I18nKey
+                name:
+                  type: string
+                  x-go-name: Name
+                value:
+                  type: string
+                  x-go-name: Value
+              type: object
+            type: array
+            x-go-name: Options
+          type:
+            type: string
+            x-go-name: Type
+          validation:
+            properties:
+              max_length:
+                format: int64
+                type: integer
+                x-go-name: MaxLength
+            type: object
+            x-go-name: Validation
+        type: object
+        x-go-name: Properties
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/uicomponent
+  UIField:
+    description: UIField
+    properties:
+      component:
+        type: string
+        x-go-name: Component
+      i18n_key:
+        type: string
+        x-go-name: I18nKey
+      is_required:
+        type: boolean
+        x-go-name: IsRequired
+      label:
+        type: string
+        x-go-name: Label
+      name:
+        type: string
+        x-go-name: Name
+      placeholder:
+        type: string
+        x-go-name: Placeholder
+      properties:
+        properties:
+          options:
+            items:
+              properties:
+                i18n_key:
+                  type: string
+                  x-go-name: I18nKey
+                name:
+                  type: string
+                  x-go-name: Name
+                value:
+                  type: string
+                  x-go-name: Value
+              type: object
+            type: array
+            x-go-name: Options
+          type:
+            type: string
+            x-go-name: Type
+          validation:
+            properties:
+              max_length:
+                format: int64
+                type: integer
+                x-go-name: MaxLength
+            type: object
+            x-go-name: Validation
+        type: object
+        x-go-name: Properties
+    type: object
+    x-go-name: UIComponent
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/trip
+  UpsertCarriersPayload:
+    description: UpsertCarriersPayload
+    properties:
+      carriers:
+        items:
+          $ref: '#/definitions/CarrierPayload'
+        type: array
+        x-go-name: Carriers
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/carrier
+  UpsertedCarriersResponse:
+    description: UpsertedCarriersResponse
+    properties:
+      codes:
+        items:
+          type: string
+        type: array
+        x-go-name: Codes
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/carrier
+  deckCell:
+    properties:
+      attributes:
+        x-go-name: Attributes
+      index:
+        format: int64
+        type: integer
+        x-go-name: Index
+      type:
+        type: string
+        x-go-name: Type
+    type: object
+    x-go-package: github.com/swvl/prysm/pkg/adapter/client/trip
+host: prysm.swvl.io
+info:
+  description: Documentation for the prysm service
+  title: Prysm service
+  version: 1.0.0
+paths:
+  /amenities:
+    delete:
+      description: Delete amenity from Prysm Service Database
+      operationId: deleteAmenity
+      responses:
+        "204":
+          description: ""
+      tags:
+      - amenities
+    get:
+      description: Gets amenities from Prysm Service Database
+      operationId: getAmenities
+      responses:
+        "200":
+          description: Amenity
+          schema:
+            items:
+              $ref: '#/definitions/Amenity'
+            type: array
+      tags:
+      - amenities
+    post:
+      description: Adds amenity to Prysm Service Database
+      operationId: addAmenity
+      responses:
+        "201":
+          description: AmenityPayload
+          schema:
+            $ref: '#/definitions/AmenityPayload'
+      tags:
+      - amenities
+    put:
+      description: Update amenity in Prysm Service Database
+      operationId: updateAmenity
+      responses:
+        "200":
+          description: AmenityPayload
+          schema:
+            $ref: '#/definitions/AmenityPayload'
+      tags:
+      - amenities
+  /bookings:
+    post:
+      description: Create a new booking on third-party services
+      operationId: bookingsCreate
+      responses:
+        "200":
+          description: BookingCreateResponse
+          schema:
+            $ref: '#/definitions/BookingCreateResponse'
+      tags:
+      - bookings
+  /bookings/{id}:
+    get:
+      description: Get booking details from aggregator service
+      operationId: getBooking
+      parameters:
+      - description: The booking id
+        in: path
+        name: id
+        required: true
+        type: string
+        x-go-name: ID
+      responses:
+        "200":
+          description: BookingDetailsResponse
+          schema:
+            $ref: '#/definitions/BookingDetailsResponse'
+      tags:
+      - bookings
+  /bookings/{id}/cancel:
+    post:
+      description: Create a booking cancellation request on the adapter
+      operationId: cancelBooking
+      parameters:
+      - description: The booking id
+        in: path
+        name: id
+        required: true
+        type: string
+        x-go-name: ID
+      responses:
+        "200":
+          description: BookingCancellationResponse
+          schema:
+            $ref: '#/definitions/BookingCancellationResponse'
+      tags:
+      - bookings
+  /bookings/{id}/cancellation_policy:
+    get:
+      description: Gets booking cancellation policy from Aggregator Service(s)
+      operationId: getBookingCancellationPolicy
+      parameters:
+      - description: The booking id
+        in: path
+        name: id
+        required: true
+        type: string
+        x-go-name: ID
+      responses:
+        "200":
+          description: GetBookingCancellationPolicyResponse
+          schema:
+            $ref: '#/definitions/GetBookingCancellationPolicyResponse'
+      tags:
+      - bookings
+  /bookings/{id}/carrier/policies:
+    get:
+      description: Gets carrier cancellation policy and carrier terms
+      operationId: getCarrierPolicy
+      parameters:
+      - description: The booking id
+        in: path
+        name: id
+        required: true
+        type: string
+        x-go-name: ID
+      responses:
+        "200":
+          description: GetCarrierPolicyResponse
+          schema:
+            $ref: '#/definitions/GetCarrierPolicyResponse'
+      tags:
+      - bookings
+  /bookings/{id}/tickets:
+    get:
+      description: Get booking tickets from adapters
+      operationId: getBookingTickets
+      parameters:
+      - description: The booking id
+        in: path
+        name: id
+        required: true
+        type: string
+        x-go-name: ID
+      produces:
+      - application/pdf
+      responses:
+        "200":
+          $ref: '#/responses/ticketFile'
+      tags:
+      - bookings
+  /bookings/stations:
+    get:
+      description: Get bookings stations using booking_id as query params
+      operationId: getBookingsStations
+      responses:
+        "200":
+          description: BookingStations
+          schema:
+            items:
+              $ref: '#/definitions/BookingStations'
+            type: array
+      tags:
+      - bookings
+  /carriers:
+    put:
+      description: Add carriers to database
+      operationId: addCarriers
+      responses:
+        "201":
+          description: UpsertedCarriersResponse
+          schema:
+            $ref: '#/definitions/UpsertedCarriersResponse'
+      tags:
+      - carriers
+  /carriers/findByCode:
+    get:
+      description: Get carrier using code from database
+      operationId: getCarrierByCode
+      parameters:
+      - description: The carrier code
+        in: query
+        name: code
+        required: true
+        type: string
+        x-go-name: Code
+      responses:
+        "200":
+          description: Carrier
+          schema:
+            $ref: '#/definitions/Carrier'
+      tags:
+      - carriers
+  /fields:
+    delete:
+      description: Delete field from Prysm Service Database
+      operationId: deleteField
+      responses:
+        "204":
+          description: ""
+      tags:
+      - fields
+    get:
+      description: Gets fields from Prysm Service Database
+      operationId: getFields
+      responses:
+        "200":
+          description: Field
+          schema:
+            items:
+              $ref: '#/definitions/Field'
+            type: array
+      tags:
+      - fields
+    post:
+      description: Adds field to Prysm Service Database
+      operationId: addField
+      responses:
+        "201":
+          description: FieldPayload
+          schema:
+            $ref: '#/definitions/FieldPayload'
+      tags:
+      - fields
+    put:
+      description: Update field in Prysm Service Database
+      operationId: updateField
+      responses:
+        "200":
+          description: FieldPayload
+          schema:
+            $ref: '#/definitions/FieldPayload'
+      tags:
+      - fields
+  /health:
+    get:
+      description: Checks the health of the service
+      operationId: checkhealth
+      responses:
+        "200":
+          $ref: '#/responses/HealthResponse'
+        "503":
+          $ref: '#/responses/ServiceUnavailableResponse'
+      tags:
+      - health
+  /operatorCityMargins:
+    delete:
+      description: Delete fare margin from Prysm Service Database
+      operationId: deleteFareMargin
+      responses:
+        "204":
+          description: ""
+      tags:
+      - faremargins
+    get:
+      description: Get matching faremargin from Prysm Service Database
+      operationId: getFareMargins
+      responses:
+        "200":
+          description: OperatorCityMargin
+          schema:
+            $ref: '#/definitions/OperatorCityMargin'
+      tags:
+      - faremargins
+    post:
+      description: Adds faremargin to Prysm Service Database
+      operationId: addFaremargins
+      responses:
+        "201":
+          description: OperatorCityMargin
+          schema:
+            $ref: '#/definitions/OperatorCityMargin'
+      tags:
+      - faremargins
+    put:
+      description: Update fare margin in Prysm Service Database
+      operationId: updateFareMargins
+      responses:
+        "200":
+          description: OperatorCityMargin
+          schema:
+            $ref: '#/definitions/OperatorCityMargin'
+      tags:
+      - faremargins
+  /ready:
+    get:
+      description: Checks the readiness of the service
+      operationId: checkreadiness
+      responses:
+        "200":
+          $ref: '#/responses/HealthResponse'
+        "503":
+          $ref: '#/responses/ServiceUnavailableResponse'
+      tags:
+      - health
+  /trips:
+    get:
+      description: Gets trips from Aggregator Service(s)
+      operationId: getTrips
+      responses:
+        "200":
+          description: Trip
+          schema:
+            items:
+              $ref: '#/definitions/Trip'
+            type: array
+      tags:
+      - trips
+  /trips/{id}:
+    get:
+      description: Gets trip from Aggregator Service(s)
+      operationId: getTrip
+      parameters:
+      - description: The ID of the trip
+        in: path
+        name: id
+        required: true
+        type: string
+        x-go-name: ID
+      - description: Pick-up station Id
+        in: query
+        name: pickup_station_id
+        required: true
+        type: string
+        x-go-name: PickupStationID
+      - description: Drop-off station Id
+        in: query
+        name: dropoff_station_id
+        required: true
+        type: string
+        x-go-name: DropoffStationID
+      responses:
+        "200":
+          description: TripResponse
+          schema:
+            $ref: '#/definitions/TripResponse'
+      tags:
+      - trip
+  /trips/{id}/booking_schema:
+    get:
+      description: Gets trip booking schema
+      operationId: getTripBookingSchema
+      parameters:
+      - description: The ID of the trip
+        in: path
+        name: id
+        required: true
+        type: string
+        x-go-name: ID
+      responses:
+        "200":
+          description: CarrierBookingSchemaResponse
+          schema:
+            $ref: '#/definitions/CarrierBookingSchemaResponse'
+      tags:
+      - tripBookingSchema
+  /trips/{id}/fare_tiers:
+    get:
+      description: Gets trip Fare class tiers
+      operationId: getTripFareClasses
+      parameters:
+      - description: The ID of the trip
+        in: path
+        name: id
+        required: true
+        type: string
+        x-go-name: ID
+      responses:
+        "200":
+          description: GetFareClassesResponse
+          schema:
+            $ref: '#/definitions/GetFareClassesResponse'
+      tags:
+      - tripFareClasses
+  /trips/{id}/policies:
+    get:
+      description: Gets trip cancellation policy and terms
+      operationId: getTripPolicy
+      parameters:
+      - description: The ID of the trip
+        in: path
+        name: id
+        required: true
+        type: string
+        x-go-name: ID
+      responses:
+        "200":
+          description: GetTripPolicyResponse
+          schema:
+            $ref: '#/definitions/GetTripPolicyResponse'
+      tags:
+      - tripPolicy
+      - policies
+  /trips/{id}/seat_map:
+    get:
+      description: Gets The layout of the bus for the requested trip
+      operationId: getTripSeats
+      parameters:
+      - description: The ID of the trip
+        in: path
+        name: id
+        required: true
+        type: string
+        x-go-name: ID
+      responses:
+        "200":
+          description: TripSeatMapResponse
+          schema:
+            $ref: '#/definitions/TripSeatMapResponse'
+      tags:
+      - trip
+  /trips/{id}/stations:
+    get:
+      description: Gets information about the trip stations
+      operationId: getTripStations
+      parameters:
+      - description: The ID of the trip
+        in: path
+        name: id
+        required: true
+        type: string
+        x-go-name: ID
+      responses:
+        "200":
+          description: TripStation
+          schema:
+            items:
+              $ref: '#/definitions/TripStation'
+            type: array
+      tags:
+      - trip
+  /trips/{id}/vacancy:
+    get:
+      description: Gets trip seat vacancy
+      operationId: getTripVacancy
+      parameters:
+      - description: The ID of the trip
+        in: path
+        name: id
+        required: true
+        type: string
+        x-go-name: ID
+      responses:
+        "200":
+          description: GetVacancyResponse
+          schema:
+            $ref: '#/definitions/GetVacancyResponse'
+      tags:
+      - tripVacancy
+      - vacancy
+  /trips/prices_with_margin:
+    post:
+      description: Gets prices for trips after applying margin
+      operationId: GetTripsPricesWithMargin
+      responses:
+        "200":
+          description: TripsPricesWithMarginResponse
+          schema:
+            $ref: '#/definitions/TripsPricesWithMarginResponse'
+      tags:
+      - tripPricesWithMargin
+  /trips/search_configurations:
+    get:
+      description: Gets search configurations for trips
+      operationId: getTripsSearchConfig
+      responses:
+        "200":
+          description: TripsSearchConfigsResponse
+          schema:
+            $ref: '#/definitions/TripsSearchConfigsResponse'
+      tags:
+      - tripSearchConfigurations
+  /uicomponents:
+    delete:
+      description: Delete UIComponent from Prysm Service Database
+      operationId: deleteUIComponent
+      responses:
+        "204":
+          description: ""
+      tags:
+      - uicomponents
+    get:
+      description: Gets uicomponents from Prysm Service Database
+      operationId: getUIComponents
+      responses:
+        "200":
+          description: UIComponent
+          schema:
+            items:
+              $ref: '#/definitions/UIComponent'
+            type: array
+      tags:
+      - uicomponents
+    post:
+      description: Adds UIComponent to Prysm Service Database
+      operationId: addUIComponent
+      responses:
+        "201":
+          description: UIComponentPayload
+          schema:
+            $ref: '#/definitions/UIComponentPayload'
+      tags:
+      - uicomponents
+    put:
+      description: Update UIComponent in Prysm Service Database
+      operationId: updateUIComponent
+      responses:
+        "200":
+          description: UIComponentPayload
+          schema:
+            $ref: '#/definitions/UIComponentPayload'
+      tags:
+      - uicomponents
+produces:
+- application/json
+responses:
+  HealthResponse:
+    description: A health response indicates the service is healthy
+  ServiceUnavailableResponse:
+    description: A response for when the service is unavailable
+  ticketFile:
+    description: A FileResponse containing the ticket file
+    schema:
+      items:
+        format: uint8
+        type: integer
+      type: array
+schemes:
+- http
+securityDefinitions:
+  basic:
+    type: basic
+swagger: "2.0"
